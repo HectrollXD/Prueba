@@ -1,3 +1,4 @@
 from django.db import models
 
-# Create your models here.
+class Department( models.Model ):
+    Department_Name = models.CharField(max_length = 100, blank = False)
