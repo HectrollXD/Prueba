@@ -1,0 +1,74 @@
+{% extends 'shared/body.html' %}
+
+{% block content %}
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- name of product -->
+        <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-12"> <!-- label -->
+                <label for="productname">Product name</label>
+            </div>
+            <div class="col-lg-10 col-md-8 col-sm-12"> <!-- input -->
+                <input type="text" name="" id="productname" class="form-control">
+            </div>
+        </div>
+        <!-- description of product -->
+        <div class="row mt-4">
+            <div class="col-lg-2 col-md-4 col-sm-12"> <!-- label -->
+                <label for="productdescription">Product description</label>
+            </div>
+            <div class="col-lg-10 col-md-8 col-sm-12"> <!-- input -->
+                <input type="text" name="" id="productdescription" class="form-control">
+            </div>
+        </div>
+        <!-- two inputs (id and price) -->
+        <div class="row mt-4 mt-lg-2 mt-xl-4">
+            <!-- product id -->
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12"> <!-- label -->
+                        <label for="productid">Product ID</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-12"> <!-- input -->
+                        <input type="text" name="" id="productid" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <!-- price of product -->
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="row mt-4 mt-sm-4 mt-md-4 mt-lg-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12"> <!-- label -->
+                        <label for="productprice">Product price</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-12"> <!-- input -->
+                        <input type="text" name="" id="productprice" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- two inputs (department and provider) -->
+        <div class="row mt-4">
+            <!-- department -->
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12"> <!-- label -->
+                        <label for="department">Department</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-12"> <!-- input -->
+                        <input type="text" name="" id="department" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <!-- provider -->
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="row mt-4 mt-sm-4 mt-md-4 mt-lg-0">
+                    <div class="col-lg-4 col-md-4 col-sm-12"> <!-- label -->
+                        <label for="provider">Provider</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-12"> <!-- input -->
+                        <input type="text" name="" id="provider" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,148 @@
+{% url 'Products:showproductspage' as showproductspage %}
+{% url 'Products:addproductspage' as addproductspage %}
+{% url 'Providers:showproviderspage' as showproviderspage %}
+{% url 'Providers:addproviderspage' as addproviderspage %}
+{% url 'Departments:showdeppartmentspage' as showdeppartmentspage %}
+{% url 'Departments:adddeppartmentpage' as adddeppartmentpage %}
+{% url 'Employes:showemployespage' as showemployespage %}
+{% url 'Employes:addemployespage' as addemployespage %}
+{% url 'Accounts:settingspage' as settingspage %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'homepage' %}">{{ nameOfApplication }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <!-- products -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if request.path == showproductspage or request.path == addproductspage %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-box"></i>
+                    Products
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ showproductspage }}">
+                        <i class="bi bi-card-list"></i>
+                        {% if request.path == showproductspage %}
+                            <strong>Show all products</strong>
+                        {% else %}
+                            Show all products
+                        {% endif %}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ addproductspage }}">
+                        <i class="bi bi-plus-square"></i>
+                        {% if request.path == addproductspage %}
+                            <strong>Add new product</strong>
+                        {% else %}
+                            Add new product
+                        {% endif %}
+                    </a>
+                </div>
+            </li>
+            <!-- providers -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if request.path == showproviderspage or request.path == addproviderspage %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-people"></i>
+                    Providers
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ showproviderspage }}">
+                        <i class="bi bi-card-list"></i>
+                        {% if request.path == showproviderspage %}
+                            <strong>Show all providers</strong>
+                        {% else %}
+                            Show all providers
+                        {% endif %}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ addproviderspage }}">
+                        <i class="bi bi-clipboard-plus"></i>
+                        {% if request.path == addproviderspage %}
+                            <strong>Add new provider</strong>
+                        {% else %}
+                            Add new provider
+                        {% endif %}
+                    </a>
+                </div>
+            </li>
+            <!-- departments -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if request.path == showdeppartmentspage or request.path == adddeppartmentpage %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-shop-window"></i>
+                    Departments
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ showdeppartmentspage }}">
+                        <i class="bi bi-card-list"></i>
+                        {% if request.path == showdeppartmentspage %}
+                            <strong>Show all departments</strong>
+                        {% else %}
+                            Show all departments
+                        {% endif %}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ adddeppartmentpage }}">
+                        <i class="bi bi-journal-plus"></i>
+                        {% if request.path == adddeppartmentpage %}
+                            <strong>Add new department</strong>
+                        {% else %}
+                            Add new department
+                        {% endif %}
+                    </a>
+                </div>
+            </li>
+            <!-- Employes -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if request.path == showemployespage or request.path == addemployespage %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-file-person"></i>
+                    Employes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ showemployespage }}">
+                        <i class="bi bi-card-list"></i>
+                        {% if request.path == showemployespage %}
+                            <strong>Show all employes</strong>
+                        {% else %}
+                            Show all Employes
+                        {% endif %}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ addemployespage }}">
+                        <i class="bi bi-person-plus"></i>
+                        {% if request.path == addemployespage %}
+                            <strong>Add new employe</strong>
+                        {% else %}
+                            Add new employe
+                        {% endif %}
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <!-- settings -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if request.path == settingspage %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-person-fill"></i>
+                    Account
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ settingspage }}">
+                        <i class="bi bi-gear"></i>
+                        {% if request.path == settingspage %}
+                            <strong>Settings</strong>
+                        {% else %}
+                            Settings
+                        {% endif %}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="">
+                        <i class="bi bi-box-arrow-left"></i>
+                            Logout 
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
