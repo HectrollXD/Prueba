@@ -1,14 +1,8 @@
 from django.shortcuts import render
 from project import NAME_OF_PROJECT
 
-def showdepartments_view( request ):
-    return render( request, 'showdepartments.html',{
-        'titleOfPage': 'Show departments',
-        'nameOfApplication': NAME_OF_PROJECT
-    } )
-
-def adddepartment_view( request ):
-    return render( request, 'adddepartment.html',{
-        'titleOfPage': 'Add departments',
+def departments_view( request ):
+    return render( request, 'departments.html',{
+        'titleOfPage': 'Departments',
         'nameOfApplication': NAME_OF_PROJECT
     } )

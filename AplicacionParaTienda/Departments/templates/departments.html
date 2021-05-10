@@ -1,0 +1,38 @@
+{% extends 'shared/body.html' %}
+
+{% block content %}
+    <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 ">
+        <form method="post"> <!-- form to add new department -->
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Add new department">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-success">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-8">
+        <div class="row"> <!-- Searchbar -->
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row"> <!-- text -->
+            <div class="col-12 mt-5">
+                <h3>All departments</h3>
+            </div>
+        </div>
+        <div class="row"> <!-- table -->
+            <div class="col-12 mt-2">
+                <!-- the table will be here -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

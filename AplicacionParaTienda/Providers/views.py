@@ -1,14 +1,8 @@
 from django.shortcuts import render
 from project import NAME_OF_PROJECT
 
-def showproviders_view( request ):
-    return render( request, 'showproviders.html',{
-        'titleOfPage': 'Show providers',
-        'nameOfApplication': NAME_OF_PROJECT
-    } )
-
-def addprovider_view( request ):
-    return render( request, 'addprovider.html',{
-        'titleOfPage': 'Add providers',
+def providers_view( request ):
+    return render( request, 'providers.html',{
+        'titleOfPage': 'Providers',
         'nameOfApplication': NAME_OF_PROJECT
     } )

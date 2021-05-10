@@ -1,9 +1,7 @@
 {% url 'Products:showproductspage' as showproductspage %}
 {% url 'Products:addproductspage' as addproductspage %}
 {% url 'Providers:showproviderspage' as showproviderspage %}
-{% url 'Providers:addproviderspage' as addproviderspage %}
 {% url 'Departments:showdeppartmentspage' as showdeppartmentspage %}
-{% url 'Departments:adddeppartmentpage' as adddeppartmentpage %}
 {% url 'Employes:showemployespage' as showemployespage %}
 {% url 'Employes:addemployespage' as addemployespage %}
 {% url 'Accounts:settingspage' as settingspage %}
@@ -42,56 +40,18 @@
                 </div>
             </li>
             <!-- providers -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle {% if request.path == showproviderspage or request.path == addproviderspage %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == showproviderspage %}active{% endif %}" href="{{ showproviderspage }}">
                     <i class="bi bi-people"></i>
                     Providers
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ showproviderspage }}">
-                        <i class="bi bi-card-list"></i>
-                        {% if request.path == showproviderspage %}
-                            <strong>Show all providers</strong>
-                        {% else %}
-                            Show all providers
-                        {% endif %}
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ addproviderspage }}">
-                        <i class="bi bi-clipboard-plus"></i>
-                        {% if request.path == addproviderspage %}
-                            <strong>Add new provider</strong>
-                        {% else %}
-                            Add new provider
-                        {% endif %}
-                    </a>
-                </div>
             </li>
             <!-- departments -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle {% if request.path == showdeppartmentspage or request.path == adddeppartmentpage %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bi bi-shop-window"></i>
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == showdeppartmentspage %}active{% endif %}" href="{{ showdeppartmentspage }}">
+                    <i class="bi bi-card-list"></i>
                     Departments
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ showdeppartmentspage }}">
-                        <i class="bi bi-card-list"></i>
-                        {% if request.path == showdeppartmentspage %}
-                            <strong>Show all departments</strong>
-                        {% else %}
-                            Show all departments
-                        {% endif %}
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ adddeppartmentpage }}">
-                        <i class="bi bi-journal-plus"></i>
-                        {% if request.path == adddeppartmentpage %}
-                            <strong>Add new department</strong>
-                        {% else %}
-                            Add new department
-                        {% endif %}
-                    </a>
-                </div>
             </li>
             <!-- Employes -->
             <li class="nav-item dropdown">
@@ -139,7 +99,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="">
                         <i class="bi bi-box-arrow-left"></i>
-                            Logout 
+                            Logout
                     </a>
                 </div>
             </li>

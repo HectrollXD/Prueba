@@ -12,4 +12,3 @@ def addproducts_view( request ):
         'titleOfPage': 'Add products',
         'nameOfApplication': NAME_OF_PROJECT
     } )
-
