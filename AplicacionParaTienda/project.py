@@ -1,2 +1,2 @@
 def NAME_OF_PROJECT():
-    return 'Minisuper La Joya'
+    return 'Tiendita de la esquina'
