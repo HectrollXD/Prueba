@@ -9,8 +9,9 @@
     <!-- Form to add new provider -->
     <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 ">
         <form method="post">
+            {% csrf_token %}
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Add new provider">
+                {{ camp.Provider_Name }}
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-success">Add</button>
                 </div>
