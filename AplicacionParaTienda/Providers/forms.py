@@ -5,12 +5,12 @@ class AddProviderForm( ModelForm ):
     class Meta:
         model = Provider
         fields = [
-            'Provider_Name'
+            'provider_name'
         ]
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['Provider_Name'].widget.attrs.update({
+        self.fields['provider_name'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'Add new provider'
+            'placeholder': 'Add new provider',
         })

@@ -5,12 +5,12 @@ class AddDepartmentForm( ModelForm ):
     class Meta:
         model = Department
         fields = [
-            'Department_Name'
+            'department_name'
         ]
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['Department_Name'].widget.attrs.update({
+        self.fields['department_name'].widget.attrs.update({
             'class': 'form-control',
             'placeholder': 'Add new department'
         })
