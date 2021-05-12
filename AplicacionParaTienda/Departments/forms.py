@@ -12,5 +12,6 @@ class AddDepartmentForm( ModelForm ):
         super().__init__(*args, **kwargs)
         self.fields['department_name'].widget.attrs.update({
             'class': 'form-control',
-            'placeholder': 'Add new department'
+            'placeholder': 'Add new department',
+            'onkeyup': 'this.value = this.value.toUpperCase();'
         })
