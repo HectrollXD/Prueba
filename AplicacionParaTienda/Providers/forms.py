@@ -13,5 +13,5 @@ class AddProviderForm( ModelForm ):
         self.fields['provider_name'].widget.attrs.update({
             'class': 'form-control',
             'placeholder': 'Add new provider',
-            'onkeyup': 'this.value = this.value.toUpperCase();'            
+            'onkeyup': 'this.value = this.value.toUpperCase();'
         })

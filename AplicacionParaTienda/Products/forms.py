@@ -9,29 +9,31 @@ class AddProductForm( ModelForm ):
     class Meta:
         model = Product
         fields = [
-            'product_name',
-            'product_description',
-            'product_id',
-            'product_price',
+            'productname',
+            'productdescription',
+            'productid',
+            'productprice',
             'department',
             'provider',
         ]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['product_name'].widget.attrs.update({
+        self.fields['productname'].widget.attrs.update({
             'class': 'form-control',
+            'onkeyup': 'this.value = this.value.toUpperCase();',
         })
         
-        self.fields['product_description'].widget.attrs.update({
+        self.fields['productdescription'].widget.attrs.update({
+            'class': 'form-control',
+            'onkeyup': 'this.value = this.value.toUpperCase();',
+        })
+
+        self.fields['productid'].widget.attrs.update({
             'class': 'form-control',
         })
 
-        self.fields['product_id'].widget.attrs.update({
-            'class': 'form-control',
-        })
-
-        self.fields['product_price'].widget.attrs.update({
+        self.fields['productprice'].widget.attrs.update({
             'class': 'form-control',
         })
 

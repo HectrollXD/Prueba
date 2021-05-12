@@ -1,5 +1,104 @@
 {% extends 'shared/body.html' %}
 
 {% block content %}
-    <h1>Show Products</h1>
+<div class="col-12 col-sm-12 col-md-8 col-lg-10 col-xl-10 offset-md-4 offset-lg-2 offset-xl-2">
+    <form action="{% url 'Products:search' %}">
+        <div class="input-group mb-3">
+            <input name="key" type="text" class="form-control" placeholder="Search products">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary input-group">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="col-12 col-sm-12 col-md-4 col-lg-2 col-xl-2"> <!-- Filters -->
+    <div class="row">
+        <div class="col-12">
+            <center>
+                <h3>
+                    <i class="bi bi-funnel"></i>
+                    Filters
+                </h3>
+            </center>
+        </div>
+        <div class="col-12">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <center>Departments</center>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body" style="height: 400px; overflow-y: scroll;">
+                            <!-- show all Departments filters -->
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <center>Providers</center>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body" style="height: 400px; overflow-y: scroll;">
+                            <!-- Show all providers filters -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+        </div>
+    </div>
+</div>
+<div class="col-12 col-sm-12 col-md-8 col-lg-10 col-xl-10"> <!-- products and search -->
+    <div class="row">
+        <div class="col-12"> <!-- Products -->
+            <div class="row"> <!-- table -->
+                <div class="col-12 mt-2">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Product name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for products in object_list %}
+                                <tr class>
+                                    <td class="col-6">{{ products.productname }}</td>
+                                    <td class="col-2">${{ products.productprice }}</td>
+                                    <td class="col-2">
+                                        <button class="btn btn-primary" disabled>
+                                            <i class="bi bi-list"></i>
+                                            Detail
+                                        </button>
+                                    </td>
+                                    <td class="col-2">
+                                        <button class="btn btn-danger" disabled>
+                                            <i class="bi bi-trash"></i>
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

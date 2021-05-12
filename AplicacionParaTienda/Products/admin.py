@@ -3,9 +3,9 @@ from Products.models import Product
 
 class ProductAdmin( admin.ModelAdmin ):
     list_display = (
-        'product_id',
-        'product_name',
-        'product_price',
+        'productid',
+        'productname',
+        'productprice',
     )
 
 admin.site.register(Product, ProductAdmin)
