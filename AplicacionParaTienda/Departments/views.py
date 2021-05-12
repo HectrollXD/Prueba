@@ -6,7 +6,7 @@ from .models import Department
 
 def departments_view( request ):
     form = AddDepartmentForm( request.POST or None )
-    departments = Department.objects.all()
+    departments = Department.objects.all().order_by('department_name')
 
     if request.method == 'POST' and form.is_valid():
         form.save()

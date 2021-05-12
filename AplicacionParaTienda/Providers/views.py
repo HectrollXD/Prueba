@@ -6,7 +6,7 @@ from .models import Provider
 
 def providers_view( request ):
     form = AddProviderForm( request.POST or None )
-    providers = Provider.objects.all()
+    providers = Provider.objects.all().order_by('provider_name')
 
     if request.method == 'POST' and form.is_valid():
         form.save()
