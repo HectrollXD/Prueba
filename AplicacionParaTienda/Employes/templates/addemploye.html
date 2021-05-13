@@ -1,5 +1,56 @@
 {% extends 'shared/body.html' %}
 
 {% block content %}
-    <h1>Add Employe</h1>
+<div class="col-12">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row mt-4">
+            <div class="col-12"> <!-- first and second name -->
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">First name</span>
+                    </div>
+                    {{ camp.firstname }}
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Second name</span>
+                    </div>
+                    {{ camp.secondname }}
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12"> <!-- first and second lastname -->
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">First lastname</span>
+                    </div>
+                    {{ camp.lastname }}
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Second lastname</span>
+                    </div>
+                    {{ camp.secondlastname }}
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12"> <!-- Employe ID and email -->
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Employe ID</span>
+                    </div>
+                    {{ camp.idemploye }}
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Assoc. E-mail</span>
+                    </div>
+                    {{ camp.user }}
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-2 col-xl-2 offset-md-8 offset-lg-10 offset-xl-10">
+                <button type="submit" class="btn btn-success form-control">Add new employe</button>
+            </div>
+        </div>
+    </form>
+</div>
 {% endblock %}

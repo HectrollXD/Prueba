@@ -39,7 +39,6 @@ class SearchProviderListView( ListView ):
 
 def providers_view( request ): #Add new provider and view
     form = AddProviderForm( request.POST or None )
-    providers = Provider.objects.all().order_by('providername')
 
     if request.method == 'POST' and form.is_valid():
         form.save()
@@ -49,5 +48,4 @@ def providers_view( request ): #Add new provider and view
         'titleOfPage': 'Add new provider',
         'nameOfApplication': NAME_OF_PROJECT,
         'camp': form,
-        'providers': providers,
     } )

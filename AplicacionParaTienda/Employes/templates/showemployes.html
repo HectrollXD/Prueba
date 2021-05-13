@@ -1,5 +1,64 @@
 {% extends 'shared/body.html' %}
 
 {% block content %}
-    <h1>Show Employes</h1>
+    <div class="col-12 mb-3">
+        <center>
+            <h1>All Employes</h1>    
+        </center>
+    </div>
+    <!-- Show all employes -->
+    <div class="col-12 mt-4 mt-sm-4 mt-md-0 mt-lg-0 mt-xl-0">
+        <div class="row"> <!-- Searchbar -->
+            <div class="col-12">
+                <form action="{% url 'Employes:searchemploye' %}">
+                    <div class="input-group mb-3">
+                        <input name="emp" type="text" class="form-control" placeholder="Search employe">
+                        <div class="input-group-append">
+                            <button type="search" class="btn btn-secondary">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row"> <!-- table -->
+            <div class="col-12 mt-2">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Employe ID</th>
+                                <th scope="col">Lastname</th>
+                                <th scope="col">Name</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for prov in object_list %}
+                                <tr class>
+                                    <td class="col-3">{{ prov.idemploye }}</td>
+                                    <td class="col-3">{{ prov.lastname }}</td>
+                                    <td class="col-3">{{ prov.firstname }}</td>
+                                    <td>
+                                        <button class="btn btn-warning" disabled>
+                                            <i class="bi bi-pencil"></i>
+                                            Modify
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger" disabled>
+                                            <i class="bi bi-trash"></i>
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
