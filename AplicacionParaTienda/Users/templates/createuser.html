@@ -1,0 +1,29 @@
+{% extends 'shared/body.html' %}
+
+{% block content %}
+    <div class="col-12">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row mt-4">
+                <div class="col-12">
+                    {{ camp.username }}
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    {{ camp.email }}
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    {{ camp.password }}
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
