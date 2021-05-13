@@ -8,6 +8,10 @@ from .forms import AddProductForm
 from .models import Product
 import Products
 
+
+
+
+
 class ShowproductsListView( ListView ): #show product view and return objects
     template_name = 'showproducts.html'
     queryset = Product.objects.all().order_by('productname')
@@ -16,6 +20,10 @@ class ShowproductsListView( ListView ): #show product view and return objects
         context =  super().get_context_data(**kwargs)
         context['nameOfApplication'] = NAME_OF_PROJECT
         return context
+
+
+
+
 
 class SearchProductsListView( ListView ): #search product and return objects 
     template_name = 'searched.html'
@@ -30,6 +38,9 @@ class SearchProductsListView( ListView ): #search product and return objects
         context =  super().get_context_data(**kwargs)
         context['nameOfApplication'] = NAME_OF_PROJECT
         return context
+
+
+
 
 
 def addproducts_view( request ): #add new product

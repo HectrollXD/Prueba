@@ -3,6 +3,7 @@
 {% url 'Providers:showproviderspage' as showproviderspage %}
 {% url 'Providers:addproviderpage' as addproviderpage %}
 {% url 'Departments:showdeppartmentspage' as showdeppartmentspage %}
+{% url 'Departments:adddeppartmentpage' as adddeppartmentpage %}
 {% url 'Employes:showemployespage' as showemployespage %}
 {% url 'Employes:addemployespage' as addemployespage %}
 {% url 'Accounts:settingspage' as settingspage %}
@@ -67,11 +68,30 @@
                 </div>
             </li>
             <!-- departments -->
-            <li class="nav-item">
-                <a class="nav-link {% if request.path == showdeppartmentspage %}active{% endif %}" href="{{ showdeppartmentspage }}">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if request.path == showdeppartmentspage or request.path == adddeppartmentpage %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bi bi-card-list"></i>
                     Departments
                 </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ showdeppartmentspage }}">
+                        <i class="bi bi-card-list"></i>
+                        {% if request.path == showdeppartmentspage %}
+                            <strong>Show all departments</strong>
+                        {% else %}
+                            Show all departments
+                        {% endif %}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ adddeppartmentpage }}">
+                        <i class="bi bi-plus-square"></i>
+                        {% if request.path == adddeppartmentpage %}
+                            <strong>Add new epartment</strong>
+                        {% else %}
+                            Add new epartment
+                        {% endif %}
+                    </a>
+                </div>
             </li>
             <!-- Employes -->
             <li class="nav-item dropdown">

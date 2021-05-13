@@ -4,5 +4,7 @@ from . import views
 app_name = 'Departments'
 
 urlpatterns = [
-    path('departments/', views.departments_view, name = 'showdeppartmentspage'),
+    path('search-department', views.SearchDepartmentListView.as_view(), name = 'searcheddepartment'),
+    path('add-departments/', views.AddDepartmentsView, name = 'adddeppartmentpage'),
+    path('show-departments/', views.ShowDepartmentsListView.as_view(), name = 'showdeppartmentspage'),
 ]

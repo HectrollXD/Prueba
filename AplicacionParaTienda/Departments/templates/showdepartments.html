@@ -3,38 +3,23 @@
 {% block content %}
     <div class="col-12 mb-3">
         <center>
-            <h1>Departments</h1>    
+            <h1>All departments</h1>    
         </center>
     </div>
-     <!-- Form to add new department -->
-    <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 ">
-        <form method="POST">
-            {% csrf_token %}
-            <div class="input-group mb-3">
-                {{ camp.department_name }}
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-success">Add</button>
-                </div>
-            </div>
-        </form>
-    </div>
     <!-- Show all departments -->
-    <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-8 mt-4 mt-sm-4 mt-md-0 mt-lg-0 mt-xl-0">
+    <div class="col-12 mt-4 mt-sm-4 mt-md-0 mt-lg-0 mt-xl-0">
         <div class="row"> <!-- Searchbar -->
             <div class="col-12">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search a department">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-secondary">
-                            <i class="bi bi-search"></i>
-                        </button>
+                <form action="{% url 'Departments:searcheddepartment' %}">
+                    <div class="input-group mb-3">
+                        <input name="dep" type="text" class="form-control" placeholder="Search a department">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-secondary">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row"> <!-- text -->
-            <div class="col-12 mt-3">
-                <h3>All departments</h3>
+                </form>
             </div>
         </div>
         <div class="row"> <!-- table -->
@@ -49,17 +34,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for dep in departments %}
+                            {% for dep in object_list %}
                                 <tr class>
                                     <td class="col-8">{{ dep }}</td>
                                     <td>
-                                        <button class="btn btn-warning">
+                                        <button class="btn btn-warning" disabled>
                                             <i class="bi bi-pencil"></i>
                                             Modify
                                         </button>
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger">
+                                        <button class="btn btn-danger" disabled>
                                             <i class="bi bi-trash"></i>
                                             Delete
                                         </button>

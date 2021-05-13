@@ -1,0 +1,21 @@
+{% extends 'shared/body.html' %}
+
+{% block content %}
+    <div class="col-12 mb-3">
+        <center>
+            <h1>Departments</h1>    
+        </center>
+    </div>
+     <!-- Form to add new department -->
+    <div class="col-12">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                {{ camp.departmentname }}
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-success">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
