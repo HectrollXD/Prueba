@@ -3,38 +3,23 @@
 {% block content %}
     <div class="col-12 mb-3">
         <center>
-            <h1>Providers</h1>    
+            <h1>All providers</h1>    
         </center>
     </div>
-    <!-- Form to add new provider -->
-    <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 ">
-        <form method="post">
-            {% csrf_token %}
-            <div class="input-group mb-3">
-                {{ camp.provider_name }}
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-success">Add</button>
-                </div>
-            </div>
-        </form>
-    </div>
     <!-- Show all providers -->
-    <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-8 mt-4 mt-sm-4 mt-md-0 mt-lg-0 mt-xl-0">
+    <div class="col-12 mt-4 mt-sm-4 mt-md-0 mt-lg-0 mt-xl-0">
         <div class="row"> <!-- Searchbar -->
             <div class="col-12">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search a provider">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-secondary">
-                            <i class="bi bi-search"></i>
-                        </button>
+                <form action="{% url 'Providers:searchprovider' %}">
+                    <div class="input-group mb-3">
+                        <input name="prov" type="text" class="form-control" placeholder="Search a provider">
+                        <div class="input-group-append">
+                            <button type="search" class="btn btn-secondary">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row"> <!-- text -->
-            <div class="col-12 mt-3">
-                <h3>All providers</h3>
+                </form>
             </div>
         </div>
         <div class="row"> <!-- table -->
@@ -49,17 +34,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for prov in providers %}
+                            {% for prov in object_list %}
                                 <tr class>
                                     <td class="col-8">{{ prov }}</td>
                                     <td>
-                                        <button class="btn btn-warning">
+                                        <button class="btn btn-warning" disabled>
                                             <i class="bi bi-pencil"></i>
                                             Modify
                                         </button>
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger">
+                                        <button class="btn btn-danger" disabled>
                                             <i class="bi bi-trash"></i>
                                             Delete
                                         </button>

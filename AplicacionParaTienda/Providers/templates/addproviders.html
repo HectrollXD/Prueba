@@ -1,0 +1,21 @@
+{% extends 'shared/body.html' %}
+
+{% block content %}
+    <div class="col-12 mb-3">
+        <center>
+            <h1>Add new provider</h1>    
+        </center>
+    </div>
+    <!-- Form to add new provider -->
+    <div class="col-12">
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                {{ camp.providername }}
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-success">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

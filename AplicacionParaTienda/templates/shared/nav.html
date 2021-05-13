@@ -1,6 +1,7 @@
 {% url 'Products:showproductspage' as showproductspage %}
 {% url 'Products:addproductspage' as addproductspage %}
 {% url 'Providers:showproviderspage' as showproviderspage %}
+{% url 'Providers:addproviderpage' as addproviderpage %}
 {% url 'Departments:showdeppartmentspage' as showdeppartmentspage %}
 {% url 'Employes:showemployespage' as showemployespage %}
 {% url 'Employes:addemployespage' as addemployespage %}
@@ -40,11 +41,30 @@
                 </div>
             </li>
             <!-- providers -->
-            <li class="nav-item">
-                <a class="nav-link {% if request.path == showproviderspage %}active{% endif %}" href="{{ showproviderspage }}">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if request.path == showproviderspage or request.path == addproviderpage %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bi bi-people"></i>
                     Providers
                 </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ showproviderspage }}">
+                        <i class="bi bi-people"></i>
+                        {% if request.path == showproviderspage %}
+                            <strong>Show all providers</strong>
+                        {% else %}
+                            Show all providers
+                        {% endif %}
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ addproviderpage }}">
+                        <i class="bi bi-plus-square"></i>
+                        {% if request.path == addproviderpage %}
+                            <strong>Add new product</strong>
+                        {% else %}
+                            Add new product
+                        {% endif %}
+                    </a>
+                </div>
             </li>
             <!-- departments -->
             <li class="nav-item">

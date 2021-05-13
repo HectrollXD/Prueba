@@ -4,7 +4,6 @@ from django.shortcuts import redirect
 from Providers.models import Provider
 from django.shortcuts import render
 from project import NAME_OF_PROJECT
-from django.forms.forms import Form
 from .forms import AddProductForm
 from .models import Product
 import Products
