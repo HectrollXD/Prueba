@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -9,7 +11,10 @@ from .models import Provider
 
 
 
-class ShowProviderListView( ListView ):
+
+
+class ShowProviderListView( LoginRequiredMixin, ListView ):
+    login_url = 'loginpage'
     template_name = 'showproviders.html'
     queryset = Provider.objects.all().order_by('providername')
 
@@ -24,7 +29,8 @@ class ShowProviderListView( ListView ):
 
 
 
-class SearchProviderListView( ListView ):
+class SearchProviderListView( LoginRequiredMixin, ListView ):
+    login_url = 'loginpage'
     template_name = 'searchedprov.html'
     
     def get_queryset( self ):
@@ -37,6 +43,7 @@ class SearchProviderListView( ListView ):
 
 
 
+@login_required( login_url = 'loginpage' )
 def providers_view( request ): #Add new provider and view
     form = AddProviderForm( request.POST or None )
 

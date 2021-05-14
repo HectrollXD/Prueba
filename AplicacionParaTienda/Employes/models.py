@@ -13,6 +13,8 @@ class Employe( models.Model ):
     )
     secondname = models.CharField(
         max_length = 25,
+        null = True,
+        blank = True,
     )
     lastname = models.CharField(
         max_length = 25,

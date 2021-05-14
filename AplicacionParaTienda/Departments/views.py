@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.shortcuts import redirect
 from .forms import AddDepartmentForm
@@ -9,8 +11,10 @@ from .models import Department
 
 
 
-class ShowDepartmentsListView( ListView ):
+class ShowDepartmentsListView( LoginRequiredMixin, ListView ):
+    login_url = 'loginpage'
     template_name = 'showdepartments.html'
+
     queryset = Department.objects.all().order_by('departmentname')
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -21,7 +25,9 @@ class ShowDepartmentsListView( ListView ):
 
 
 
-class SearchDepartmentListView( ListView ):
+
+class SearchDepartmentListView( LoginRequiredMixin, ListView ):
+    login_url = 'loginpage'
     template_name = 'searcheddep.html'
 
     def get_queryset(self):
@@ -40,6 +46,7 @@ class SearchDepartmentListView( ListView ):
 
 
 
+@login_required( login_url = 'loginpage' )
 def AddDepartmentsView( request ):
     form = AddDepartmentForm( request.POST or None )
     departments = Department.objects.all().order_by('departmentname')

@@ -2,10 +2,13 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.contrib.auth import login
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
+from django.shortcuts import render
 from project import NAME_OF_PROJECT
+from django.contrib import messages
 from .forms import AddNewUserForm
 from .forms import LoginForm
+
 
 
 
@@ -45,10 +48,25 @@ def AddUserPageView( request ):
         user = form.cleaned_data.get('username')
         email = form.cleaned_data.get('email')
         passw = form.cleaned_data.get('password')
-        if form.cleaned_data.get('admin') == 'A':
-            User.objects.create_user( user, email, passw, is_superuser = True,  is_staff = True)
+
+        if User.objects.filter(username = user).exists():
+            messages.error( request, 'Please, verify that the user entered does not belong to someone else.')
+            return redirect('createuserpage')
         else:
-            User.objects.create_user( user, email, passw)
+            if form.cleaned_data.get('admin') == 'A':            
+                if User.objects.create_user( user, email, passw, is_superuser = True,  is_staff = True):
+                    messages.success( request, 'Created user admin successfully!')
+                    return redirect('createuserpage')
+                else:
+                    messages.error( request, 'Sorry, an problem was ocurred.')
+                    return redirect('createuserpage')
+            else:
+                if User.objects.create_user( user, email, passw):
+                    messages.success( request, 'Created user employe successfully!')
+                    return redirect('createuserpage')
+                else:
+                    messages.error( request, 'Sorry, an problem was ocurred.')
+                    return redirect('createuserpage')
 
     return render(request, 'createuser.html', {
         'titleOfPage': 'Create user',

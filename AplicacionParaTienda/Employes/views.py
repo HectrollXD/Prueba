@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.shortcuts import redirect
 from .forms import AddNewEmployeForm
@@ -11,7 +13,8 @@ from .models import Employe
 
 
 
-class ShowAllEmployesListView( ListView ):
+class ShowAllEmployesListView( LoginRequiredMixin, ListView ):
+    login_url = 'loginpage'
     template_name = 'showemployes.html'
     queryset = Employe.objects.all()
 
@@ -25,7 +28,8 @@ class ShowAllEmployesListView( ListView ):
 
 
 
-class SearchEmployesListView( ListView ):
+class SearchEmployesListView( LoginRequiredMixin, ListView ):
+    login_url = 'loginpage'
     template_name = "searchedemploye.html"
 
     def get_queryset( self ):
@@ -44,7 +48,7 @@ class SearchEmployesListView( ListView ):
 
 
 
-
+@login_required( login_url = 'loginpage' )
 def addemploye_view( request ):
     form = AddNewEmployeForm( request.POST or None )
 

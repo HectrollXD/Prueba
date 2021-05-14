@@ -15,6 +15,18 @@
         <main>
             <div class="container">
                 <div class="row mt-5 mb-5">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="col-12 mb-5"> <!-- messages -->
+                                <div class="alert {% if message.tags == 'success' %} alert-success {% else %} alert-danger {% endif %} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                     {% block content %}
                     {% endblock %}
                 </div>
