@@ -6,17 +6,43 @@
             {% csrf_token %}
             <div class="row mt-4">
                 <div class="col-12">
-                    {{ camp.username }}
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="bi bi-person"> Username</i>
+                            </span>
+                        </div>
+                        {{ camp.username }}
+                    </div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-12">
-                    {{ camp.email }}
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i>@ E-mail</i>
+                            </span>
+                        </div>
+                        {{ camp.email }}
+                    </div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-12">
-                    {{ camp.password }}
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="bi bi-key"> Password</i>
+                            </span>
+                        </div>
+                        {{ camp.password }}
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    {{ camp.admin }}
                 </div>
             </div>
             <div class="row mt-4">

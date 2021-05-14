@@ -14,7 +14,7 @@ class AddNewEmployeForm( ModelForm ):
             'lastname',
             'secondlastname',
             'idemploye',
-            'user',
+            'usr',
         ]
 
     def __init__( self, *args, **kwargs ):
@@ -39,7 +39,6 @@ class AddNewEmployeForm( ModelForm ):
             'class': 'form-control',
             'onkeyup': 'this.value = this.value.toUpperCase();',
         })
-        self.fields['user'].widget.attrs.update({
+        self.fields['usr'].widget.attrs.update({
             'class': 'form-control',
-            'onkeyup': 'this.value = this.value.toUpperCase();',
         })

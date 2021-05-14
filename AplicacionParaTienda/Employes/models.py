@@ -29,7 +29,7 @@ class Employe( models.Model ):
         blank = False,
         null = False
     )
-    user = models.OneToOneField(
+    usr = models.OneToOneField(
         User,
         on_delete = models.CASCADE,
     )
