@@ -13,7 +13,6 @@ from .forms import LoginForm
 
 
 
-
 def LoginPageView( request ):
     form = LoginForm( request.POST or None )
 
@@ -24,12 +23,13 @@ def LoginPageView( request ):
         if user:
             login(request, user)
             if user.is_superuser:
+                messages.success(request, 'Welcome: {}.'.format(user.username))
                 return redirect('homepage')
             else:
-                print('No es admin')
-            
+                messages.success(request, 'Welcome: {}.'.format(user.username))
+                return redirect('homepage') 
         else:
-            print("valio webos la autenticación")
+            messages.error(request, 'Incorrect user or password.')
 
     return render(request, 'login.html', {
         'titleOfPage': 'Login',
@@ -73,6 +73,9 @@ def AddUserPageView( request ):
         'nameOfApplication': NAME_OF_PROJECT,
         'camp': form,
     })
+
+
+
 
 
 def Logout( request ):
