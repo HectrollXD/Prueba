@@ -6,8 +6,8 @@ from django import forms
 
 class AddNewUserForm( forms.Form ):
     CHOICES = [
-        ('A', 'Admin'),
-        ('B', 'Employe')
+        ('B', 'Employe'),
+        ('A', 'Admin')
     ]
 
     username = forms.CharField(
