@@ -1,13 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
-from Departments.models import Department
 from django.shortcuts import redirect
-from Providers.models import Provider
 from django.shortcuts import render
 from project import NAME_OF_PROJECT
+from django.contrib import messages
 from .forms import AddProductForm
 from .models import Product
+
 
 
 
@@ -50,8 +50,12 @@ def addproducts_view( request ): #add new product
     form = AddProductForm(request.POST or None)
 
     if request.method == 'POST' and form.is_valid():
-        form.save()
-        return redirect('Products:addproductspage')
+        if form.save():
+            messages.success(request, 'Product added successfully!')
+            return redirect('Products:addproductspage')
+        else:
+            messages.error(request, 'Sorry. An problem was ocurred during product register action. :c')
+            return redirect('Products:addproductspage')
 
     return render( request, 'addproduct.html',{
         'titleOfPage': 'Add products',
