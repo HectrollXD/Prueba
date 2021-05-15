@@ -1,5 +1,9 @@
+from django.contrib.auth import models
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from django.views.generic import ListView
 from django.contrib.auth import logout
 from django.contrib.auth import login
 from django.shortcuts import redirect
@@ -8,6 +12,22 @@ from project import NAME_OF_PROJECT
 from django.contrib import messages
 from .forms import AddNewUserForm
 from .forms import LoginForm
+
+
+
+
+
+class ShowAllAccountsListView( LoginRequiredMixin, ListView ):
+    login_url = 'loginpage'
+
+    template_name = 'showallaccounts.html'
+    queryset = User.objects.all().select_related('usremploye').order_by('username')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titleOfPage'] = 'All users'
+        context['nameOfApplication'] = NAME_OF_PROJECT
+        return context
 
 
 
@@ -78,6 +98,7 @@ def AddUserPageView( request ):
 
 
 
+@login_required( login_url = 'loginpage' )
 def Logout( request ):
     logout(request)
     return redirect('loginpage')

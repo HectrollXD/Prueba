@@ -7,9 +7,9 @@
 {% url 'Employes:showemployespage' as showemployespage %}
 {% url 'Employes:addemployespage' as addemployespage %}
 {% url 'Accounts:settingspage' as settingspage %}
-{% url 'Users:logoutpage' as logoutpage %}
+{% url 'showalluserspage' as showalluserspage %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="{% url 'homepage' %}">{{ nameOfApplication }}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -62,9 +62,9 @@
                         <a class="dropdown-item" href="{{ addproviderpage }}">
                             <i class="bi bi-plus-square"></i>
                             {% if request.path == addproviderpage %}
-                                <strong>Add new product</strong>
+                                <strong>Add new provider</strong>
                             {% else %}
-                                Add new product
+                                Add new provider
                             {% endif %}
                         </a>
                     </div>
@@ -97,7 +97,7 @@
                 </li>
                 <!-- Employes -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {% if request.path == showemployespage or request.path == addemployespage %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle {% if request.path == showemployespage or request.path == addemployespage or request.path == showalluserspage%}active{% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="bi bi-file-person"></i>
                         Employes
                     </a>
@@ -108,6 +108,14 @@
                                 <strong>Show all employes</strong>
                             {% else %}
                                 Show all Employes
+                            {% endif %}
+                        </a>
+                        <a class="dropdown-item" href="{{ showalluserspage }}">
+                            <i class="bi bi-person"></i>
+                            {% if request.path == showalluserspage %}
+                                <strong>Show all accounts</strong>
+                            {% else %}
+                                Show all accounts
                             {% endif %}
                         </a>
                         <div class="dropdown-divider"></div>

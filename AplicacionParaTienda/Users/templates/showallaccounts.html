@@ -1,0 +1,71 @@
+{% extends 'shared/body.html' %}
+
+{% block content %}
+    <div class="col-12 mb-3">
+        <center>
+            <h1>All accounts registers</h1>    
+        </center>
+    </div>
+    <!-- Show all accounts
+    action="{% url 'Providers:searchprovider' %}" -->
+    <div class="col-12 mt-4 mt-sm-4 mt-md-0 mt-lg-0 mt-xl-0">
+        <div class="row"> <!-- Searchbar -->
+            <div class="col-12">
+                <form >
+                    <div class="input-group mb-3">
+                        <input name="prov" type="text" class="form-control" placeholder="Search accounts">
+                        <div class="input-group-append">
+                            <button type="search" class="btn btn-secondary">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row"> <!-- table -->
+            <div class="col-12 mt-2">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-dark text-center">
+                            <tr>
+                                <th scope="col">Username</th>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Employe</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody  class="text-center">
+                            {% for user in object_list %}
+                                <tr class>
+                                    <td class="col-2">{{ user.username }}</td>
+                                    <td class="col-3">{{ user.email }}</td>
+                                    <td class="col-3">
+                                        {% if user.usremploye.idemploye %}
+                                            {{ user.usremploye.idemploye }}
+                                        {% else %}
+                                            <i class="text-danger">No assign</i>
+                                        {% endif %}
+                                    </td>
+                                    <td class="col-2">
+                                        <button class="btn btn-warning form-control" disabled>
+                                            <i class="bi bi-pencil"></i>
+                                            Modify
+                                        </button>
+                                    </td>
+                                    <td class="col-2">
+                                        <button class="btn btn-danger form-control" disabled>
+                                            <i class="bi bi-trash"></i>
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

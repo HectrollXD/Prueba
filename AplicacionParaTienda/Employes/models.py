@@ -34,6 +34,7 @@ class Employe( models.Model ):
     usr = models.OneToOneField(
         User,
         on_delete = models.CASCADE,
+        related_name = 'usremploye',
     )
 
     def __str__( self ):
